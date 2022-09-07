@@ -1,4 +1,4 @@
-package br.com.erudio.foo;
+package br.com.erudio.calculator;
 
 public class Math {
 
