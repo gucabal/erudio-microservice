@@ -1,7 +1,9 @@
 package br.com.erudio.calculator.math;
 
 import br.com.erudio.calculator.utils.NumberConverter;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SimpleMath {
 
     public Double sum(Double numberOne, Double numberTwo){
