@@ -1,11 +1,14 @@
 package br.com.erudio.calculator.controller;
 
 import br.com.erudio.calculator.exception.UnsuportedMathOperationException;
+import br.com.erudio.calculator.math.SimpleMath;
 import br.com.erudio.calculator.utils.NumberConverter;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MathController {
+
+    SimpleMath math = new SimpleMath();
 
     @RequestMapping(value="/sum/{numberOne}/{numberTwo}", method= RequestMethod.GET)
     public Double sum(@PathVariable("numberOne") String numberOne,@PathVariable("numberTwo") String numberTwo) throws Exception {
@@ -14,8 +17,8 @@ public class MathController {
             throw new UnsuportedMathOperationException("Por Favor defina um valor numérico.");
         }
 
-    Double sum = NumberConverter.convertToDouble(numberOne) + NumberConverter.convertToDouble(numberTwo);
-    return sum;
+        return math.sum(NumberConverter.convertToDouble(numberOne),
+                NumberConverter.convertToDouble(numberTwo));
 
     }
 
@@ -26,8 +29,8 @@ public class MathController {
             throw new UnsuportedMathOperationException("Por Favor defina um valor numérico.");
         }
 
-        Double sub = NumberConverter.convertToDouble(numberOne) - NumberConverter.convertToDouble(numberTwo);
-        return sub;
+        return math.sub(NumberConverter.convertToDouble(numberOne),
+                NumberConverter.convertToDouble(numberTwo));
 
     }
 
@@ -38,8 +41,8 @@ public class MathController {
             throw new UnsuportedMathOperationException("Por Favor defina um valor numérico.");
         }
 
-        Double mult = NumberConverter.convertToDouble(numberOne) * NumberConverter.convertToDouble(numberTwo);
-        return mult;
+        return math.mult(NumberConverter.convertToDouble(numberOne),
+                NumberConverter.convertToDouble(numberTwo));
 
     }
 
@@ -50,8 +53,8 @@ public class MathController {
             throw new UnsuportedMathOperationException("Por Favor defina um valor numérico.");
         }
 
-        Double div = NumberConverter.convertToDouble(numberOne) / NumberConverter.convertToDouble(numberTwo);
-        return div;
+        return math.div(NumberConverter.convertToDouble(numberOne),
+                NumberConverter.convertToDouble(numberTwo));
 
     }
 
@@ -62,8 +65,8 @@ public class MathController {
             throw new UnsuportedMathOperationException("Por Favor defina um valor numérico.");
         }
 
-        Double med = (NumberConverter.convertToDouble(numberOne) + NumberConverter.convertToDouble(numberTwo)) / 2;
-        return med;
+        return math.med(NumberConverter.convertToDouble(numberOne),
+                NumberConverter.convertToDouble(numberTwo));
 
     }
 
@@ -74,8 +77,7 @@ public class MathController {
             throw new UnsuportedMathOperationException("Por Favor defina um valor numérico.");
         }
 
-        Double raiz = Math.sqrt(NumberConverter.convertToDouble(numberOne));
-        return raiz;
+        return math.raiz(NumberConverter.convertToDouble(numberOne));
 
     }
 
