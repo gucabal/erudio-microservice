@@ -1,7 +1,7 @@
-package br.com.erudio.calculator;
+package br.com.erudio.model;
 
-public class Math {
-
+public class Greeting {
+    //TESTE
     private final long id;
     private final String content;
 
@@ -13,7 +13,7 @@ public class Math {
         return content;
     }
 
-    public Math(long id, String content) {
+    public Greeting(long id, String content) {
         this.id = id;
         this.content = content;
     }
